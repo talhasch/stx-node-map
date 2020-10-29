@@ -59,10 +59,13 @@ function App() {
 
     const load = () => {
         setLoading(true);
-        getIPs()
-            .then(ips => Promise.all(ips.map(item => ip2loc(item))))
-            .then(r => setLocations(r))
-            .finally(() => setLoading(false));
+        setTimeout(() => {
+            getIPs()
+                .then(ips => Promise.all(ips.map(item => ip2loc(item))))
+                .then(r => setLocations(r))
+                .finally(() => setLoading(false));
+        }, 500);
+
     }
 
     useEffect(() => {
@@ -90,7 +93,7 @@ function App() {
                         <div><Button disabled={loading} size="sm" onClick={load}>{refreshSvg}</Button></div>
                     </div>
                     {locations.map((x, i) => {
-                        return <div className="list-item">
+                        return <div className="list-item" key={i}>
                             <div className="row-1">
                                 <span className="num">{i + 1}</span>
                                 <span className="ip">{x.ip}</span>
