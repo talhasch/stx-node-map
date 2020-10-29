@@ -1,3 +1,3 @@
-# STX Nodes
+# STX Node Map
 
-Stacks blockchain live node map.
+Locations of stacks blockchain peer nodes on a world map.
