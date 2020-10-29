@@ -36,7 +36,7 @@ interface Ip2Loc {
 }
 
 const getIPs = async (): Promise<string[]> => {
-    return fetch("http://krypton.blockstack.org:20443/v2/neighbors")
+    return fetch("https://krypton.talhabulut.com/v2/neighbors")
         .then(r => r.json())
         .then((r: Neighbors) => {
             return Array.from(new Set([
@@ -65,7 +65,6 @@ function App() {
             .finally(() => setLoading(false));
     }
 
-
     useEffect(() => {
         load();
     }, []);
@@ -87,7 +86,7 @@ function App() {
             <div className="content">
                 <div className="list">
                     <div className="list-header">
-                        <div> {loading ? "..." : <span>{locations.length} miners</span>}</div>
+                        <div> {loading ? "..." : <span>{locations.length} Nodes</span>}</div>
                         <div><Button disabled={loading} size="sm" onClick={load}>{refreshSvg}</Button></div>
                     </div>
                     {locations.map((x, i) => {
