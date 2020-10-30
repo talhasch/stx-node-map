@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react';
 
 import {Button} from "react-bootstrap";
 
-import {YMaps, Map, Placemark} from 'react-yandex-maps';
+
+import {Map, TileLayer, Marker, Popup} from "react-leaflet";
+
 
 import {refreshSvg} from "./svg";
 
@@ -72,16 +74,21 @@ function App() {
         load();
     }, []);
 
-    const center = [55.75, 37.57];
-    const MyMap = <YMaps query={{lang: "en_US"}}>
-        <Map width={"100%"} height={"100%"} defaultState={{center, zoom: 3}}>
-            {locations.map((x, i) => {
-                return <Placemark key={x.ip} geometry={[x.latitude, x.longitude]} hasBalloon={true} properties={{
-                    iconContent: i + 1
-                }}/>
-            })}
-        </Map>
-    </YMaps>;
+    const center = {lat: 31.579396, lng: 13.686786};
+    const MyMap = <Map center={center} zoom={2} id="the-map">
+        <TileLayer
+            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {locations.map((x, i) => {
+            return <Marker position={{lat: x.latitude, lng: x.longitude}}>
+                <Popup>
+                    {x.country_name} -  {x.city} <br />
+                    {x.ip}
+                </Popup>
+            </Marker>
+        })}
+    </Map>;
 
     return (
         <div className="wrapper">

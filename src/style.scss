@@ -18,6 +18,11 @@ html, body, .wrapper {
 
   .map {
     flex-grow: 1;
+    height: 100%;
+
+    #the-map {
+      height: 100%;
+    }
   }
 
   .content {
