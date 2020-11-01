@@ -8,20 +8,24 @@ import config from "./config";
 
 import {Node, ApiResponse} from "./types";
 
-const load = (): Promise<ApiResponse> => fetch(config.api).then(r => r.json());
+const loadData = (): Promise<ApiResponse> => fetch(config.api).then(r => r.json());
 
 function App() {
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
     const [network, setNetwork] = useState<string>("")
     const [nodes, setNodes] = useState<Node[]>([]);
 
+    const load = () => {
+        loadData().then(r => {
+            setNetwork(r.network);
+            setNodes(r.nodes);
+        }).finally(() => setLoading(false));
+    }
+
     useEffect(() => {
         load()
-            .then(r => {
-                setNetwork(r.network);
-                setNodes(r.nodes);
-            })
-            .finally(() => setLoading(false))
+        const interval = setInterval(load, 10000);
+        return () => clearInterval(interval);
     }, []);
 
     if (loading) {
