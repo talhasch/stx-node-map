@@ -1,6 +1,7 @@
 $font-family-base:  'Inter', sans-serif;
 
 @import "~bootstrap/scss/bootstrap";
+@import "~leaflet/dist/leaflet.css";
 
 $sm-break: map-get($grid-breakpoints, "sm");
 $md-break: map-get($grid-breakpoints, "md");
