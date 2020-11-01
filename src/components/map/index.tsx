@@ -3,18 +3,18 @@ import React from 'react';
 import {Map, Marker, Popup, TileLayer} from "react-leaflet";
 
 import {Node} from "../../types";
-import {DivIcon, DivIconOptions} from "leaflet";
 
+import {DivIcon, DivIconOptions} from "leaflet";
 
 interface Props {
     nodes: Node[];
 }
 
-
 const NodeMap = (props: Props) => {
-
     const {nodes} = props;
-    const center = {lat: 40.00, lng: 12.00};
+
+    const center = {lat: 20.00, lng: 12.00};
+
     const publicCount = nodes.filter(x => x.location).length;
 
     const iconProps: DivIconOptions = {
@@ -28,7 +28,7 @@ const NodeMap = (props: Props) => {
 
     return <div className="node-map">
         <div className="title">{publicCount} public stacks node</div>
-        <Map center={center} zoom={2} className="the-map">
+        <Map center={center} zoom={1} className="the-map">
             <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

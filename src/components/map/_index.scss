@@ -1,6 +1,18 @@
 .node-map {
-  width: 900px;
+  width: 300px;
   margin: 0 auto 60px auto;
+
+  @media (min-width: $sm-break) {
+    width: 500px;
+  }
+
+  @media (min-width: $md-break) {
+    width: 700px;
+  }
+
+  @media (min-width: $lg-break) {
+    width: 900px;
+  }
 
   .title {
     padding: 10px 0;
@@ -9,7 +21,12 @@
   }
 
   .the-map {
-    height: 500px;
+    height: 350px;
+
+    @media (min-width: $lg-break) {
+      height: 450px;
+    }
+
     border: 3px solid $gray-100;
     border-radius: 4px;
   }
