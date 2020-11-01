@@ -4,7 +4,7 @@ import './style.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import "typeface-ibm-plex-sans";
+import "typeface-inter";
 
 ReactDOM.render(
   <React.StrictMode>
