@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 import {Map, Marker, Popup, TileLayer} from "react-leaflet";
 
@@ -33,19 +33,31 @@ const NodeMap = (props: Props) => {
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {nodes.map((x, i) => {
-                if (!x.location) {
+            {nodes.map((node, i) => {
+                if (!node.location) {
                     return null;
                 }
 
-                const {location, address} = x;
-                const {country, city} = location;
-                const href = `http://${address}:20443/v2/info`;
+                // Search for nodes on same location
+                const rNodes = nodes.filter(x => x.location && (x.location.lng === node.location!.lng && x.location.lat === node.location!.lat));
 
-                return <Marker icon={icon} key={i} position={{lat: x.location.lat, lng: x.location.lng}}>
+                return <Marker icon={icon} key={i} position={{lat: node.location.lat, lng: node.location.lng}}>
                     <Popup className="map-popup-content">
-                        <p><strong>{country}</strong> {city && <> - {city}</>} </p>
-                        <a href={href} rel="noreferrer" target="_blank">{address}</a></Popup>
+                        {rNodes.map((x, i) => {
+                            if (!x.location) {
+                                return null;
+                            }
+
+                            const {location, address} = x;
+                            const {country, city} = location;
+                            const href = `http://${address}:20443/v2/info`;
+
+                            return <Fragment key={i}>
+                                <p><strong>{country}</strong> {city && <> - {city}</>} </p>
+                                <a href={href} rel="noreferrer" target="_blank">{address}</a>
+                            </Fragment>
+                        })}
+                    </Popup>
                 </Marker>
             })}
         </Map>
