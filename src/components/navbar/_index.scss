@@ -1,0 +1,11 @@
+.main-nav-bar {
+  box-shadow: rgba($gray-800, 0.04) 0 1px 2px, rgba($gray-800, 0.04) 0 4px 8px;
+
+  .nav-link {
+    color: $gray-700 !important;
+
+    svg {
+      height: 10px;
+    }
+  }
+}

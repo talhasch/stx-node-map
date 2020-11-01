@@ -1,3 +1,6 @@
+$font-family-base: 'IBM Plex Sans', sans-serif;
+
+
 @import "~bootstrap/scss/bootstrap";
 
 html, body, .wrapper {
@@ -90,3 +93,7 @@ html, body, .wrapper {
     height: 20px;
   }
 }
+
+@import "components/navbar";
+@import "components/info-card";
+@import "components/map";

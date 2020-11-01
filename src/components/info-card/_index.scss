@@ -1,0 +1,44 @@
+.info-card {
+  margin: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .card-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.2rem;
+    color: $gray-700;
+
+    .node-count {
+      font-size: 6rem;
+      color: $gray-800;
+    }
+
+    .network {
+      margin-top: 10px;
+      font-size: 0.9rem;
+
+      .network-label {
+        display: inline-flex;
+        padding: 1px 4px;
+        border-radius: 6px;
+        color: $white;
+      }
+
+      &.testnet {
+        .network-label {
+          background: $orange;
+        }
+      }
+
+      &.mainnet {
+        .network-label {
+          background: $green;
+        }
+      }
+    }
+  }
+}
