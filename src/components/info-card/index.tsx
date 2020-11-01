@@ -19,7 +19,7 @@ const InfoCard = (props: Props) => {
                 <CountUp start={1} end={count} duration={3}/>
             </div>
             <div>online</div>
-            <div>stacks node</div>
+            <div>stacks nodes</div>
             <div className={`network ${network}`}>
             <div className="network-label">{network}</div>
             </div>
