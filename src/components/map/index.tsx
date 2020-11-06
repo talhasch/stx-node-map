@@ -30,7 +30,7 @@ const NodeMap = (props: Props) => {
 
     return <div className="node-map">
         <div className="title">{publicCount} public stacks node</div>
-        <Map center={center} zoom={1} className="the-map">
+        <Map center={center} zoom={2} className="the-map">
             <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
